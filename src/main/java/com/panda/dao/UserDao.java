@@ -1,5 +1,21 @@
 package com.panda.dao;
 
+import com.panda.pojo.User;
+
 public interface UserDao {
-    public void login(String name,String pwd);
+
+    /**
+     * @category 根据用户密码登录
+     * @param account
+     * @param pwd
+     * @return
+     */
+    public User login(String account,String pwd);
+
+    /**
+     * @category 根据用户账号获取用户
+     * @param account
+     * @return
+     */
+    public User getUserById(String account);
 }

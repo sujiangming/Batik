@@ -1,13 +1,41 @@
 package com.panda.pojo;
 
-public class User {
-    private String userName;
+import org.hibernate.annotations.GenericGenerator;
 
-    public String getUserName() {
-        return userName;
-    }
+import javax.persistence.*;
+import java.io.Serializable;
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+/**
+ * 这里是和数据库做映射关系
+ */
+@Entity
+@Table(name = "t_panda_user")
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    @GeneratedValue(generator = "system-uuid")
+    @Column
+    private String id;// 主键
+    @Id
+    @Column
+    private String account;//账号
+    @Column
+    private String pwd;//密码
+    @Column
+    private String cname;//中文名
+    @Column
+    private String mobile;//手机号
+
+    public String getId() {return id;}
+    public void setId(String id) {this.id = id; }
+    public String getAccount() { return account;}
+    public void setAccount(String account) {this.account = account;}
+    public String getPwd() {return pwd;}
+    public void setPwd(String pwd) {this.pwd = pwd;}
+    public String getCname() {return cname; }
+    public void setCname(String cname) {this.cname = cname;}
+    public String getMobile() {return mobile;}
+    public void setMobile(String mobile) {this.mobile = mobile;}
 }
